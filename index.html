@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy & Terms of Service | Atlas Reign</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -31,24 +36,33 @@
                 <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">AR</div>
                 <span class="font-bold text-xl tracking-tight">Atlas Reign</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#privacy" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Privacy Policy</a>
-                <a href="#terms" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Terms of Service</a>
-                <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="hidden md:flex space-x-8 text-sm font-medium mr-4">
+                    <a href="#privacy" data-i18n="nav-privacy" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Privacy Policy</a>
+                    <a href="#terms" data-i18n="nav-terms" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Terms of Service</a>
+                    <a href="#contact" data-i18n="nav-contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+                </div>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center bg-slate-200 dark:bg-slate-800 rounded-full p-1 text-xs font-bold">
+                    <button onclick="setLanguage('en')" id="lang-en" class="px-3 py-1 rounded-full transition-all">EN</button>
+                    <button onclick="setLanguage('tr')" id="lang-tr" class="px-3 py-1 rounded-full transition-all">TR</button>
+                </div>
+
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 006.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
             </div>
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
-                <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
-                <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 006.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="pt-32 pb-16 px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-300">
+        <h1 data-i18n="hero-title" class="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-300">
             Legal Information
         </h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+        <p data-i18n="hero-subtitle" class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             Transparency and trust are at the core of Atlas Reign. Below you'll find our policies regarding your data and the terms of using our software.
         </p>
     </header>
@@ -61,31 +75,31 @@
                 <div class="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                 </div>
-                <h2 class="text-3xl font-bold">Privacy Policy</h2>
+                <h2 data-i18n="privacy-title" class="text-3xl font-bold">Privacy Policy</h2>
             </div>
 
             <div class="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-600 dark:text-slate-400">
-                <p>Last updated: September 2026</p>
+                <p data-i18n="privacy-last-updated">Last updated: September 2026</p>
 
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                    <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">1. Our Approach to Privacy</h3>
-                    <p>Atlas Reign: World Strategy is designed as a <strong>premium offline experience</strong>. We believe your strategic conquests and game data should belong solely to you.</p>
+                    <h3 data-i18n="privacy-section-1-title" class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">1. Our Approach to Privacy</h3>
+                    <p data-i18n="privacy-section-1-text">Atlas Reign: World Strategy is designed as a <strong>premium offline experience</strong>. We believe your strategic conquests and game data should belong solely to you.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <h4 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">What We Collect</h4>
-                        <p class="text-sm">We do not collect personal identification information (PII) such as names, email addresses, or phone numbers. No account registration is required to play the game.</p>
+                        <h4 data-i18n="privacy-collect-title" class="font-semibold text-slate-900 dark:text-slate-100 mb-2">What We Collect</h4>
+                        <p data-i18n="privacy-collect-text" class="text-sm">We do not collect personal identification information (PII) such as names, email addresses, or phone numbers. No account registration is required to play the game.</p>
                     </div>
                     <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-                        <h4 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">Data Storage</h4>
-                        <p class="text-sm">All game saves, scenario customizations, and settings are stored <strong>locally on your device</strong>. We do not sync your data to external servers.</p>
+                        <h4 data-i18n="privacy-store-title" class="font-semibold text-slate-900 dark:text-slate-100 mb-2">Data Storage</h4>
+                        <p data-i18n="privacy-store-text" class="text-sm">All game saves, scenario customizations, and settings are stored <strong>locally on your device</strong>. We do not sync your data to external servers.</p>
                     </div>
                 </div>
 
                 <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
-                    <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">2. Third-Party Services</h3>
-                    <p>While Atlas Reign is offline, certain platform-level services (Google Play Store, Apple App Store) may collect basic device telemetry for distribution and billing purposes. We encourage you to review their respective privacy policies.</p>
+                    <h3 data-i18n="privacy-section-2-title" class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">2. Third-Party Services</h3>
+                    <p data-i18n="privacy-section-2-text">While Atlas Reign is offline, certain platform-level services (Google Play Store, Apple App Store) may collect basic device telemetry for distribution and billing purposes. We encourage you to review their respective privacy policies.</p>
                 </div>
             </div>
         </section>
@@ -96,7 +110,7 @@
                 <div class="p-2 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 rounded-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 </div>
-                <h2 class="text-3xl font-bold">Terms of Service</h2>
+                <h2 data-i18n="terms-title" class="text-3xl font-bold">Terms of Service</h2>
             </div>
 
             <div class="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-600 dark:text-slate-400">
@@ -104,24 +118,24 @@
                     <div class="flex gap-4">
                         <div class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0">01</div>
                         <div>
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">License Grant</h3>
-                            <p>Upon purchase or download, you are granted a non-exclusive, non-transferable license to use Atlas Reign for personal, non-commercial entertainment purposes.</p>
+                            <h3 data-i18n="terms-01-title" class="text-lg font-semibold text-slate-900 dark:text-slate-100">License Grant</h3>
+                            <p data-i18n="terms-01-text">Upon purchase or download, you are granted a non-exclusive, non-transferable license to use Atlas Reign for personal, non-commercial entertainment purposes.</p>
                         </div>
                     </div>
 
                     <div class="flex gap-4">
                         <div class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0">02</div>
                         <div>
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">User Conduct</h3>
-                            <p>You agree not to reverse engineer, decompile, or attempt to extract the source code of the game. Creating unauthorized modifications for commercial gain is prohibited.</p>
+                            <h3 data-i18n="terms-02-title" class="text-lg font-semibold text-slate-900 dark:text-slate-100">User Conduct</h3>
+                            <p data-i18n="terms-02-text">You agree not to reverse engineer, decompile, or attempt to extract the source code of the game. Creating unauthorized modifications for commercial gain is prohibited.</p>
                         </div>
                     </div>
 
                     <div class="flex gap-4">
                         <div class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0">03</div>
                         <div>
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Disclaimer of Warranty</h3>
-                            <p>Atlas Reign is provided "as is" without warranty of any kind. While we strive for a premium experience, we do not guarantee that the software will be error-free or uninterrupted.</p>
+                            <h3 data-i18n="terms-03-title" class="text-lg font-semibold text-slate-900 dark:text-slate-100">Disclaimer of Warranty</h3>
+                            <p data-i18n="terms-03-text">Atlas Reign is provided "as is" without warranty of any kind. While we strive for a premium experience, we do not guarantee that the software will be error-free or uninterrupted.</p>
                         </div>
                     </div>
                 </div>
@@ -131,9 +145,9 @@
         <!-- Contact Section -->
         <section id="contact" class="scroll-mt-24">
             <div class="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl">
-                <h2 class="text-3xl font-bold mb-4">Have Questions?</h2>
-                <p class="mb-8 text-indigo-100 max-w-lg mx-auto">If you have any questions about our legal policies or need support with the game, feel free to reach out.</p>
-                <a href="mailto:support@atlasreign.com" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg">
+                <h2 data-i18n="contact-title" class="text-3xl font-bold mb-4">Have Questions?</h2>
+                <p data-i18n="contact-subtitle" class="mb-8 text-indigo-100 max-w-lg mx-auto">If you have any questions about our legal policies or need support with the game, feel free to reach out.</p>
+                <a href="mailto:support@atlasreign.com" data-i18n="contact-button" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg">
                     Contact Support
                 </a>
             </div>
@@ -142,10 +156,98 @@
     </main>
 
     <footer class="border-t border-slate-200 dark:border-slate-700 py-12 text-center text-slate-500 dark:text-slate-400 text-sm">
-        <p>&copy; 2026 Atlas Reign: World Strategy. All rights reserved.</p>
+        <p data-i18n="footer-text">&copy; 2026 Atlas Reign: World Strategy. All rights reserved.</p>
     </footer>
 
     <script>
+        const translations = {
+            en: {
+                'nav-privacy': 'Privacy Policy',
+                'nav-terms': 'Terms of Service',
+                'nav-contact': 'Contact',
+                'hero-title': 'Legal Information',
+                'hero-subtitle': 'Transparency and trust are at the core of Atlas Reign. Below you\'ll find our policies regarding your data and the terms of using our software.',
+                'privacy-title': 'Privacy Policy',
+                'privacy-last-updated': 'Last updated: September 2026',
+                'privacy-section-1-title': '1. Our Approach to Privacy',
+                'privacy-section-1-text': 'Atlas Reign: World Strategy is designed as a <strong>premium offline experience</strong>. We believe your strategic conquests and game data should belong solely to you.',
+                'privacy-collect-title': 'What We Collect',
+                'privacy-collect-text': 'We do not collect personal identification information (PII) such as names, email addresses, or phone numbers. No account registration is required to play the game.',
+                'privacy-store-title': 'Data Storage',
+                'privacy-store-text': 'All game saves, scenario customizations, and settings are stored <strong>locally on your device</strong>. We do not sync your data to external servers.',
+                'privacy-section-2-title': '2. Third-Party Services',
+                'privacy-section-2-text': 'While Atlas Reign is offline, certain platform-level services (Google Play Store, Apple App Store) may collect basic device telemetry for distribution and billing purposes. We encourage you to review their respective privacy policies.',
+                'terms-title': 'Terms of Service',
+                'terms-01-title': 'License Grant',
+                'terms-01-text': 'Upon purchase or download, you are granted a non-exclusive, non-transferable license to use Atlas Reign for personal, non-commercial entertainment purposes.',
+                'terms-02-title': 'User Conduct',
+                'terms-02-text': 'You agree not to reverse engineer, decompile, or attempt to extract the source code of the game. Creating unauthorized modifications for commercial gain is prohibited.',
+                'terms-03-title': 'Disclaimer of Warranty',
+                'terms-03-text': 'Atlas Reign is provided "as is" without warranty of any kind. While we strive for a premium experience, we do not guarantee that the software will be error-free or uninterrupted.',
+                'contact-title': 'Have Questions?',
+                'contact-subtitle': 'If you have any questions about our legal policies or need support with the game, feel free to reach out.',
+                'contact-button': 'Contact Support',
+                'footer-text': '&copy; 2026 Atlas Reign: World Strategy. All rights reserved.'
+            },
+            tr: {
+                'nav-privacy': 'Gizlilik Politikası',
+                'nav-terms': 'Kullanım Şartları',
+                'nav-contact': 'İletişim',
+                'hero-title': 'Yasal Bilgiler',
+                'hero-subtitle': 'Şeffaflık ve güven, Atlas Reign\'ın temelidir. Aşağıda verilerinizle ilgili politikalarımızı ve yazılımımızın kullanım şartlarını bulabilirsiniz.',
+                'privacy-title': 'Gizlilik Politikası',
+                'privacy-last-updated': 'Son güncelleme: Eylül 2026',
+                'privacy-section-1-title': '1. Gizlilik Yaklaşımımız',
+                'privacy-section-1-text': 'Atlas Reign: World Strategy, <strong>premium bir çevrimdışı deneyim</strong> olarak tasarlanmıştır. Stratejik fetihlerinizin ve oyun verilerinizin yalnızca size ait olması gerektiğine inanıyoruz.',
+                'privacy-collect-title': 'Neleri Topluyoruz',
+                'privacy-collect-text': 'İsim, e-posta adresi veya telefon numarası gibi kişisel tanımlama bilgilerini (PII) toplamıyoruz. Oyunu oynamak için hesap kaydı gerekmez.',
+                'privacy-store-title': 'Veri Depolama',
+                'privacy-store-text': 'Tüm oyun kayıtları, senaryo özelleştirmeleri ve ayarlar <strong>yerel olarak cihazınızda</strong> saklanır. Verilerinizi harici sunucularla senkronize etmiyoruz.',
+                'privacy-section-2-title': '2. Üçüncü Taraf Hizmetler',
+                'privacy-section-2-text': 'Atlas Reign çevrimdışı olsa da, bazı platform düzeyindeki hizmetler (Google Play Store, Apple App Store), dağıtım ve faturalandırma amaçlarıyla temel cihaz telemetrisi toplayabilir. Bu hizmetlerin gizlilik politikalarını incelemenizi öneririz.',
+                'terms-title': 'Kullanım Şartları',
+                'terms-01-title': 'Lisans Hakkı',
+                'terms-01-text': 'Satın alma veya indirme ile, Atlas Reign\'ı kişisel, ticari olmayan eğlence amaçlı kullanmanız için size münhasır olmayan, devredilemez bir lisans verilir.',
+                'terms-02-title': 'Kullanıcı Davranışı',
+                'terms-02-text': 'Oyunun kaynak kodunu tersine mühendislik yapmamayı, derlememeyi veya çıkarmaya çalışmamayı kabul ediyorsunuz. Ticari kazanç için yetkisiz modifikasyonlar oluşturmak yasaktır.',
+                'terms-03-title': 'Garanti Reddi',
+                'terms-03-text': 'Atlas Reign, herhangi bir garanti olmaksızın "olduğu gibi" sunulmaktadır. Premium bir deneyim sunmaya çalışsak da, yazılımın hatasız veya kesintisiz olacağını garanti etmiyoruz.',
+                'contact-title': 'Sorularınız mı Var?',
+                'contact-subtitle': 'Yasal politikalarımız hakkında sorularınız varsa veya oyunla ilgili desteğe ihtiyacınız varsa, bizimle iletişime geçmekten çekinmeyin.',
+                'contact-button': 'Destekle İletişime Geç',
+                'footer-text': '&copy; 2026 Atlas Reign: World Strategy. Tüm hakları saklıdır.'
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            updateLanguageUI();
+        }
+
+        function updateLanguageUI() {
+            const lang = localStorage.getItem('lang') || 'en';
+
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update active language button
+            document.querySelectorAll('[id^="lang-"]').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-600', 'dark:bg-slate-700', 'dark:text-indigo-400', 'shadow-sm');
+            });
+            const activeBtn = document.getElementById(`lang-${lang}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'text-indigo-600', 'dark:bg-slate-700', 'dark:text-indigo-400', 'shadow-sm');
+            }
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
         const themeToggle = document.getElementById('theme-toggle');
         const sunIcon = document.getElementById('sun-icon');
         const moonIcon = document.getElementById('moon-icon');
@@ -165,7 +267,9 @@
                 localStorage.setItem('theme', 'dark');
             }
         });
+
+        // Initial load
+        updateLanguageUI();
     </script>
 </body>
 </html>
-<!-- check -->
